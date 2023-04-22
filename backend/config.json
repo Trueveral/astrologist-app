@@ -1,0 +1,214 @@
+{
+  "graph": {
+    "hsys": "Placidus",
+    "IDs": [
+      "Sun",
+      "Moon",
+      "Mercury",
+      "Venus",
+      "Mars",
+      "Jupiter",
+      "Saturn",
+      "Uranus",
+      "Neptune",
+      "Pluto",
+      "Ceres",
+      "Pallas",
+      "Juno",
+      "Vesta",
+      "Chiron",
+      "Asc",
+      "MC",
+      "IC",
+      "Desc",
+      "ArmC",
+      "Vertex",
+      "NorthNode",
+      "SouthNode",
+      "Syzygy",
+      "Fortune",
+      "House1",
+      "House2",
+      "House3",
+      "House4",
+      "House5",
+      "House6",
+      "House7",
+      "House8",
+      "House9",
+      "House10",
+      "House11",
+      "House12"
+    ],
+    "date": { "date": "2000/06/18", "time": "15:44", "utcoffset": "+08:00" },
+    "pos": { "lat": "25n50", "lon": "113e79" },
+    "planets": {
+      "Sun": {
+        "orb": 0.0
+      },
+      "Moon": {
+        "orb": 0.0
+      },
+      "Mercury": {
+        "orb": 0.0
+      },
+      "Venus": {
+        "orb": 0.0
+      },
+      "Mars": {
+        "orb": 0.0
+      },
+      "Jupiter": {
+        "orb": 0.0
+      },
+      "Saturn": {
+        "orb": 0.0
+      },
+      "Uranus": {
+        "orb": 0.0
+      },
+      "Neptune": {
+        "orb": 0.0
+      },
+      "Pluto": {
+        "orb": 0.0
+      }
+    },
+    "points": {
+      "Asc": {
+        "orb": 0.0
+      },
+      "MC": {
+        "orb": 0.0
+      },
+      "IC": {
+        "orb": 0.0
+      },
+      "Desc": {
+        "orb": 0.0
+      },
+      "ArmC": {
+        "orb": 0.0
+      },
+      "NorthNode": {
+        "orb": 0.0
+      },
+      "SouthNode": {
+        "orb": 0.0
+      },
+      "Fortune": {
+        "orb": 0.0
+      },
+      "Syzygy": {
+        "orb": 0.0
+      },
+      "Vertex": {
+        "orb": 0.0
+      }
+    },
+    "houses": {
+      "House1": {
+        "orb": 5.0
+      },
+      "House2": {
+        "orb": 5.0
+      },
+      "House3": {
+        "orb": 5.0
+      },
+      "House4": {
+        "orb": 5.0
+      },
+      "House5": {
+        "orb": 5.0
+      },
+      "House6": {
+        "orb": 5.0
+      },
+      "House7": {
+        "orb": 5.0
+      },
+      "House8": {
+        "orb": 5.0
+      },
+      "House9": {
+        "orb": 5.0
+      },
+      "House10": {
+        "orb": 5.0
+      },
+      "House11": {
+        "orb": 5.0
+      },
+      "House12": {
+        "orb": 5.0
+      }
+    },
+    "asteroids": {
+      "Chiron": {
+        "orb": 0.0
+      },
+      "Ceres": {
+        "orb": 0.0
+      },
+      "Pallas": {
+        "orb": 0.0
+      },
+      "Juno": {
+        "orb": 0.0
+      },
+      "Vesta": {
+        "orb": 0.0
+      }
+    },
+    "aspects": {
+      "max_exact_orb": 0.0,
+      "0": {
+        "orb": 6.0
+      },
+      "60": {
+        "orb": 3.0
+      },
+      "90": {
+        "orb": 5.0
+      },
+      "120": {
+        "orb": 5.0
+      },
+      "180": {
+        "orb": 5.0
+      },
+      "30": {
+        "orb": 3.0
+      },
+      "36": {
+        "orb": 3.0
+      },
+      "45": {
+        "orb": 3.0
+      },
+      "72": {
+        "orb": 2.0
+      },
+      "108": {
+        "orb": 3.0
+      },
+      "135": {
+        "orb": 3.0
+      },
+      "144": {
+        "orb": 2.0
+      },
+      "150": {
+        "orb": 3.0
+      }
+    }
+  },
+  "describe": {
+    "planets": "True",
+    "points": "True",
+    "houses": "True",
+    "aspects": "True",
+    "dignities": "True"
+  }
+}

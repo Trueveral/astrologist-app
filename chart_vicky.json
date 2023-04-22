@@ -1,0 +1,1356 @@
+{
+    "hsys": "Placidus",
+    "datetime": {
+        "date": "2000/06/18",
+        "time": "15:44:00",
+        "utcoffset": "08:00:00"
+    },
+    "geopos": [
+        "25N50:00",
+        "114E19:00"
+    ],
+    "is_diurnal": true,
+    "moon_phase": "Third Quarter",
+    "is_house_1_asc": true,
+    "is_house_10_mc": true,
+    "planets": {
+        "Sun": {
+            "id": "Sun",
+            "type": "Planet",
+            "lon": 87.37377389146346,
+            "lat": -1.5248056527474594e-05,
+            "sign": "Gemini",
+            "signlon": 27.373773891463458,
+            "lonspeed": 0.9542541230619276,
+            "latspeed": -3.0062132632970868e-05,
+            "orb_data": 0.0,
+            "mean_motion": 0.98556,
+            "gender_data": "Masculine",
+            "faction_data": "Diurnal",
+            "element_data": "Fire",
+            "temperament_data": "Choleric",
+            "signjoy_data": "Leo",
+            "housejoy_data": "House9",
+            "sunbeams": null,
+            "light": "Diminishing Light",
+            "orientality": "Occidental",
+            "isFast": false
+        },
+        "Moon": {
+            "id": "Moon",
+            "type": "Planet",
+            "lon": 282.45811877548374,
+            "lat": 1.112114444326822,
+            "sign": "Capricorn",
+            "signlon": 12.45811877548374,
+            "lonspeed": 11.79874366396518,
+            "latspeed": -1.056100247424333,
+            "orb_data": 0.0,
+            "mean_motion": 13.17653,
+            "gender_data": "Feminine",
+            "faction_data": "Nocturnal",
+            "element_data": "Water",
+            "temperament_data": "Phlegmatic",
+            "signjoy_data": "Cancer",
+            "housejoy_data": "House3",
+            "sunbeams": null,
+            "light": "Diminishing Light",
+            "orientality": "Oriental",
+            "isFast": false
+        },
+        "Mercury": {
+            "id": "Mercury",
+            "type": "Planet",
+            "lon": 108.99948330236553,
+            "lat": -0.46249963827186785,
+            "sign": "Cancer",
+            "signlon": 18.999483302365533,
+            "lonspeed": 0.3801415090463312,
+            "latspeed": -0.24510008899103308,
+            "orb_data": 0.0,
+            "mean_motion": 1.38333,
+            "gender_data": "Neutral",
+            "faction_data": "Neutral",
+            "element_data": "Earth",
+            "temperament_data": "Melancholic",
+            "signjoy_data": "Virgo",
+            "housejoy_data": "House1",
+            "sunbeams": null,
+            "light": "Diminishing Light",
+            "orientality": "Occidental",
+            "isFast": false
+        },
+        "Venus": {
+            "id": "Venus",
+            "type": "Planet",
+            "lon": 89.25716626341085,
+            "lat": 0.3707179694430243,
+            "sign": "Gemini",
+            "signlon": 29.257166263410852,
+            "lonspeed": 1.228465062302033,
+            "latspeed": 0.03839518535625721,
+            "orb_data": 0.0,
+            "mean_motion": 1.2,
+            "gender_data": "Feminine",
+            "faction_data": "Nocturnal",
+            "element_data": "Air",
+            "temperament_data": "Sanguine",
+            "signjoy_data": "Taurus",
+            "housejoy_data": "House5",
+            "sunbeams": "Combust",
+            "light": "Augmenting Light",
+            "orientality": "Occidental",
+            "isFast": true
+        },
+        "Mars": {
+            "id": "Mars",
+            "type": "Planet",
+            "lon": 91.20850939721129,
+            "lat": 0.7847720141123915,
+            "sign": "Cancer",
+            "signlon": 1.2085093972112873,
+            "lonspeed": 0.6702069758743469,
+            "latspeed": 0.006885179644591752,
+            "orb_data": 0.0,
+            "mean_motion": 0.52408,
+            "gender_data": "Masculine",
+            "faction_data": "Nocturnal",
+            "element_data": "Fire",
+            "temperament_data": "Choleric",
+            "signjoy_data": "Scorpio",
+            "housejoy_data": "House6",
+            "sunbeams": "Combust",
+            "light": "Diminishing Light",
+            "orientality": "Occidental",
+            "isFast": true
+        },
+        "Jupiter": {
+            "id": "Jupiter",
+            "type": "Planet",
+            "lon": 57.422057301498526,
+            "lat": -0.839463533694352,
+            "sign": "Taurus",
+            "signlon": 27.422057301498526,
+            "lonspeed": 0.22040363607721192,
+            "latspeed": 5.53226901464395e-05,
+            "orb_data": 0.0,
+            "mean_motion": 0.08319,
+            "gender_data": "Masculine",
+            "faction_data": "Diurnal",
+            "element_data": "Air",
+            "temperament_data": "Sanguine",
+            "signjoy_data": "Sagittarius",
+            "housejoy_data": "House11",
+            "sunbeams": null,
+            "light": "Augmenting Light",
+            "orientality": "Oriental",
+            "isFast": true
+        },
+        "Saturn": {
+            "id": "Saturn",
+            "type": "Planet",
+            "lon": 55.232380535757905,
+            "lat": -2.0053031785683815,
+            "sign": "Taurus",
+            "signlon": 25.232380535757905,
+            "lonspeed": 0.1158937853974956,
+            "latspeed": -0.0010350604813107141,
+            "orb_data": 0.0,
+            "mean_motion": 0.03361,
+            "gender_data": "Masculine",
+            "faction_data": "Diurnal",
+            "element_data": "Earth",
+            "temperament_data": "Melancholic",
+            "signjoy_data": "Aquarius",
+            "housejoy_data": "House12",
+            "sunbeams": null,
+            "light": "Augmenting Light",
+            "orientality": "Oriental",
+            "isFast": true
+        },
+        "Uranus": {
+            "id": "Uranus",
+            "type": "Planet",
+            "lon": 320.5963224587484,
+            "lat": -0.7184226492288694,
+            "sign": "Aquarius",
+            "signlon": 20.596322458748375,
+            "lonspeed": -0.018542599185447674,
+            "latspeed": -0.0005701957130996261,
+            "orb_data": 0.0,
+            "mean_motion": 0.001167,
+            "gender_data": "Neutral",
+            "faction_data": "None",
+            "element_data": "Neutral",
+            "temperament_data": "None",
+            "signjoy_data": "Aquarius",
+            "housejoy_data": "None",
+            "sunbeams": null,
+            "light": "Augmenting Light",
+            "orientality": "Oriental",
+            "isFast": true
+        },
+        "Neptune": {
+            "id": "Neptune",
+            "type": "Planet",
+            "lon": 306.1505119374768,
+            "lat": 0.21694594801224462,
+            "sign": "Aquarius",
+            "signlon": 6.150511937476779,
+            "lonspeed": -0.019443101738456026,
+            "latspeed": -0.00011288964734363908,
+            "orb_data": 0.0,
+            "mean_motion": 0.00667,
+            "gender_data": "Neutral",
+            "faction_data": "None",
+            "element_data": "Neutral",
+            "temperament_data": "None",
+            "signjoy_data": "Pisces",
+            "housejoy_data": "None",
+            "sunbeams": null,
+            "light": "Augmenting Light",
+            "orientality": "Oriental",
+            "isFast": true
+        },
+        "Pluto": {
+            "id": "Pluto",
+            "type": "Planet",
+            "lon": 251.09933501770556,
+            "lat": 11.270624544042098,
+            "sign": "Sagittarius",
+            "signlon": 11.099335017705556,
+            "lonspeed": -0.025672002279750222,
+            "latspeed": -0.0033159111583418283,
+            "orb_data": 0.0,
+            "mean_motion": 0.00417,
+            "gender_data": "Neutral",
+            "faction_data": "None",
+            "element_data": "Neutral",
+            "temperament_data": "None",
+            "signjoy_data": "Scorpio",
+            "housejoy_data": "None",
+            "sunbeams": null,
+            "light": "Diminishing Light",
+            "orientality": "Occidental",
+            "isFast": true
+        }
+    },
+    "points": {
+        "Asc": {
+            "id": "Asc",
+            "type": "Generic",
+            "lon": 221.93900648296614,
+            "lat": 0,
+            "sign": "Scorpio",
+            "signlon": 11.939006482966136,
+            "lonspeed": 0,
+            "latspeed": 0,
+            "orb_data": 0.0,
+            "mean_motion": 0.0,
+            "movement": "Stationary",
+            "sunbeams": null,
+            "light": "Diminishing Light",
+            "orientality": "Occidental",
+            "isFast": true
+        },
+        "MC": {
+            "id": "MC",
+            "type": "Generic",
+            "lon": 134.70764788493534,
+            "lat": 0,
+            "sign": "Leo",
+            "signlon": 14.70764788493534,
+            "lonspeed": 0,
+            "latspeed": 0,
+            "orb_data": 0.0,
+            "mean_motion": 0.0,
+            "movement": "Stationary",
+            "sunbeams": null,
+            "light": "Diminishing Light",
+            "orientality": "Occidental",
+            "isFast": true
+        },
+        "IC": {
+            "id": "IC",
+            "type": "Generic",
+            "lon": 314.70764788493534,
+            "lat": 0,
+            "sign": "Aquarius",
+            "signlon": 14.70764788493534,
+            "lonspeed": 0,
+            "latspeed": 0,
+            "orb_data": 0.0,
+            "mean_motion": 0.0,
+            "movement": "Stationary",
+            "sunbeams": null,
+            "light": "Augmenting Light",
+            "orientality": "Oriental",
+            "isFast": true
+        },
+        "Desc": {
+            "id": "Desc",
+            "type": "Generic",
+            "lon": 41.939006482966136,
+            "lat": 0,
+            "sign": "Taurus",
+            "signlon": 11.939006482966136,
+            "lonspeed": 0,
+            "latspeed": 0,
+            "orb_data": 0.0,
+            "mean_motion": 0.0,
+            "movement": "Stationary",
+            "sunbeams": null,
+            "light": "Augmenting Light",
+            "orientality": "Oriental",
+            "isFast": true
+        },
+        "ArmC": {
+            "id": "ArmC",
+            "type": "Generic",
+            "lon": 137.17248301153165,
+            "lat": 0,
+            "sign": "Leo",
+            "signlon": 17.172483011531654,
+            "lonspeed": 0,
+            "latspeed": 0,
+            "orb_data": 0.0,
+            "mean_motion": 0.0,
+            "movement": "Stationary",
+            "sunbeams": null,
+            "light": "Diminishing Light",
+            "orientality": "Occidental",
+            "isFast": true
+        },
+        "Vertex": {
+            "id": "Vertex",
+            "type": "Generic",
+            "lon": 105.0988342406887,
+            "lat": 0,
+            "sign": "Cancer",
+            "signlon": 15.098834240688703,
+            "lonspeed": 0,
+            "latspeed": 0,
+            "orb_data": 0.0,
+            "mean_motion": 0.0,
+            "movement": "Stationary",
+            "sunbeams": null,
+            "light": "Diminishing Light",
+            "orientality": "Occidental",
+            "isFast": true
+        },
+        "NorthNode": {
+            "id": "NorthNode",
+            "type": "Generic",
+            "lon": 116.10039996395346,
+            "lat": 0.0,
+            "sign": "Cancer",
+            "signlon": 26.100399963953464,
+            "lonspeed": -0.052925659408437,
+            "latspeed": 0.0,
+            "orb_data": 0.0,
+            "mean_motion": 13.1833,
+            "movement": "Retrograde",
+            "sunbeams": null,
+            "light": "Diminishing Light",
+            "orientality": "Occidental",
+            "isFast": false
+        },
+        "SouthNode": {
+            "id": "SouthNode",
+            "type": "Generic",
+            "lon": 296.10039996395346,
+            "lat": 0.0,
+            "sign": "Capricorn",
+            "signlon": 26.100399963953464,
+            "lonspeed": -0.052925659408437,
+            "latspeed": 0.0,
+            "orb_data": 0.0,
+            "mean_motion": 13.1833,
+            "movement": "Retrograde",
+            "sunbeams": null,
+            "light": "Augmenting Light",
+            "orientality": "Oriental",
+            "isFast": false
+        },
+        "Syzygy": {
+            "id": "Syzygy",
+            "type": "Generic",
+            "lon": 266.05005807688946,
+            "lat": 2.512638121319745,
+            "sign": "Sagittarius",
+            "signlon": 26.050058076889457,
+            "lonspeed": 11.876291476834659,
+            "latspeed": -0.9503600748649945,
+            "orb_data": 0.0,
+            "mean_motion": 0.0,
+            "movement": "Direct",
+            "sunbeams": null,
+            "light": "Augmenting Light",
+            "orientality": "Occidental",
+            "isFast": true
+        },
+        "Fortune": {
+            "id": "Fortune",
+            "type": "Generic",
+            "lon": 57.02335136698639,
+            "lat": 0,
+            "sign": "Taurus",
+            "signlon": 27.02335136698639,
+            "lonspeed": 0,
+            "latspeed": 0,
+            "orb_data": 0.0,
+            "mean_motion": 0.0,
+            "movement": "Stationary",
+            "sunbeams": null,
+            "light": "Augmenting Light",
+            "orientality": "Oriental",
+            "isFast": true
+        }
+    },
+    "houses": {
+        "House1": {
+            "id": "House1",
+            "type": "House",
+            "lon": 221.93900648296614,
+            "lat": 0,
+            "sign": "Scorpio",
+            "signlon": 11.939006482966136,
+            "size": 29.22869802397861,
+            "condition": "Angular",
+            "aboveHorizon": false,
+            "objects": [
+                "Asc"
+            ]
+        },
+        "House2": {
+            "id": "House2",
+            "type": "House",
+            "lon": 251.16770450694474,
+            "lat": 0,
+            "sign": "Sagittarius",
+            "signlon": 11.167704506944744,
+            "size": 31.016578254144065,
+            "condition": "Succedent",
+            "aboveHorizon": false,
+            "objects": [
+                "Pluto",
+                "Chiron",
+                "Syzygy"
+            ]
+        },
+        "House3": {
+            "id": "House3",
+            "type": "House",
+            "lon": 282.1842827610888,
+            "lat": 0,
+            "sign": "Capricorn",
+            "signlon": 12.18428276108881,
+            "size": 32.52336512384653,
+            "condition": "Cadent",
+            "aboveHorizon": false,
+            "objects": [
+                "Moon",
+                "Neptune",
+                "Vesta",
+                "SouthNode"
+            ]
+        },
+        "House4": {
+            "id": "House4",
+            "type": "House",
+            "lon": 314.70764788493534,
+            "lat": 0,
+            "sign": "Aquarius",
+            "signlon": 14.70764788493534,
+            "size": 32.25490485410887,
+            "condition": "Angular",
+            "aboveHorizon": false,
+            "objects": [
+                "Uranus",
+                "Juno",
+                "IC"
+            ]
+        },
+        "House5": {
+            "id": "House5",
+            "type": "House",
+            "lon": 346.9625527390442,
+            "lat": 0,
+            "sign": "Pisces",
+            "signlon": 16.962552739044213,
+            "size": 29.40913348674337,
+            "condition": "Succedent",
+            "aboveHorizon": false,
+            "objects": []
+        },
+        "House6": {
+            "id": "House6",
+            "type": "House",
+            "lon": 16.371686225787585,
+            "lat": 0,
+            "sign": "Aries",
+            "signlon": 16.371686225787585,
+            "size": 25.56732025717855,
+            "condition": "Cadent",
+            "aboveHorizon": false,
+            "objects": []
+        },
+        "House7": {
+            "id": "House7",
+            "type": "House",
+            "lon": 41.939006482966136,
+            "lat": 0,
+            "sign": "Taurus",
+            "signlon": 11.939006482966136,
+            "size": 29.22869802397861,
+            "condition": "Angular",
+            "aboveHorizon": true,
+            "objects": [
+                "Jupiter",
+                "Saturn",
+                "Desc",
+                "Fortune"
+            ]
+        },
+        "House8": {
+            "id": "House8",
+            "type": "House",
+            "lon": 71.16770450694474,
+            "lat": 0,
+            "sign": "Gemini",
+            "signlon": 11.167704506944744,
+            "size": 31.016578254144065,
+            "condition": "Succedent",
+            "aboveHorizon": true,
+            "objects": [
+                "Sun",
+                "Venus",
+                "Mars"
+            ]
+        },
+        "House9": {
+            "id": "House9",
+            "type": "House",
+            "lon": 102.18428276108881,
+            "lat": 0,
+            "sign": "Cancer",
+            "signlon": 12.18428276108881,
+            "size": 32.52336512384653,
+            "condition": "Cadent",
+            "aboveHorizon": true,
+            "objects": [
+                "Mercury",
+                "Vertex",
+                "NorthNode"
+            ]
+        },
+        "House10": {
+            "id": "House10",
+            "type": "House",
+            "lon": 134.70764788493534,
+            "lat": 0,
+            "sign": "Leo",
+            "signlon": 14.70764788493534,
+            "size": 32.2549048541089,
+            "condition": "Angular",
+            "aboveHorizon": true,
+            "objects": [
+                "Pallas",
+                "MC",
+                "ArmC"
+            ]
+        },
+        "House11": {
+            "id": "House11",
+            "type": "House",
+            "lon": 166.96255273904424,
+            "lat": 0,
+            "sign": "Virgo",
+            "signlon": 16.96255273904424,
+            "size": 29.409133486743343,
+            "condition": "Succedent",
+            "aboveHorizon": true,
+            "objects": [
+                "Ceres"
+            ]
+        },
+        "House12": {
+            "id": "House12",
+            "type": "House",
+            "lon": 196.37168622578758,
+            "lat": 0,
+            "sign": "Libra",
+            "signlon": 16.371686225787585,
+            "size": 25.56732025717855,
+            "condition": "Cadent",
+            "aboveHorizon": true,
+            "objects": []
+        }
+    },
+    "aspects": {
+        "SunVenus": {
+            "type": 0,
+            "name": "Conjunction",
+            "orb": {
+                "orb": 6.0
+            },
+            "error": 1.883392371947366,
+            "active": "Venus",
+            "passive": "Sun",
+            "isMutualAspect": false,
+            "isMutualMovement": false
+        },
+        "SunMars": {
+            "type": 0,
+            "name": "Conjunction",
+            "orb": {
+                "orb": 6.0
+            },
+            "error": 3.8347355057478296,
+            "active": "Sun",
+            "passive": "Mars",
+            "isMutualAspect": false,
+            "isMutualMovement": false
+        },
+        "SunCeres": {
+            "type": 90,
+            "name": "Square",
+            "orb": {
+                "orb": 5.0
+            },
+            "error": 3.2133442652076383,
+            "active": "Sun",
+            "passive": "Ceres",
+            "isMutualAspect": false,
+            "isMutualMovement": false
+        },
+        "SunPallas": {
+            "type": 60,
+            "name": "Sextile",
+            "orb": {
+                "orb": 3.0
+            },
+            "error": 0.29858755369878054,
+            "active": "Sun",
+            "passive": "Pallas",
+            "isMutualAspect": false,
+            "isMutualMovement": true
+        },
+        "SunJuno": {
+            "type": 120,
+            "name": "Trine",
+            "orb": {
+                "orb": 5.0
+            },
+            "error": 0.5549229812982901,
+            "active": "Sun",
+            "passive": "Juno",
+            "isMutualAspect": false,
+            "isMutualMovement": false
+        },
+        "MoonAsc": {
+            "type": 60,
+            "name": "Sextile",
+            "orb": {
+                "orb": 3.0
+            },
+            "error": 0.5191122925176046,
+            "active": "Moon",
+            "passive": "Asc",
+            "isMutualAspect": false,
+            "isMutualMovement": false
+        },
+        "MoonDesc": {
+            "type": 120,
+            "name": "Trine",
+            "orb": {
+                "orb": 5.0
+            },
+            "error": 0.5191122925176046,
+            "active": "Moon",
+            "passive": "Desc",
+            "isMutualAspect": false,
+            "isMutualMovement": false
+        },
+        "MoonVertex": {
+            "type": 180,
+            "name": "Opposition",
+            "orb": {
+                "orb": 5.0
+            },
+            "error": 2.6407154652049485,
+            "active": "Moon",
+            "passive": "Vertex",
+            "isMutualAspect": false,
+            "isMutualMovement": false
+        },
+        "MercuryVertex": {
+            "type": 0,
+            "name": "Conjunction",
+            "orb": {
+                "orb": 6.0
+            },
+            "error": 3.9006490616768588,
+            "active": "Mercury",
+            "passive": "Vertex",
+            "isMutualAspect": false,
+            "isMutualMovement": false
+        },
+        "VenusMars": {
+            "type": 0,
+            "name": "Conjunction",
+            "orb": {
+                "orb": 6.0
+            },
+            "error": 1.9513431338004352,
+            "active": "Venus",
+            "passive": "Mars",
+            "isMutualAspect": false,
+            "isMutualMovement": false
+        },
+        "VenusCeres": {
+            "type": 90,
+            "name": "Square",
+            "orb": {
+                "orb": 5.0
+            },
+            "error": 1.3299518932602439,
+            "active": "Venus",
+            "passive": "Ceres",
+            "isMutualAspect": false,
+            "isMutualMovement": false
+        },
+        "VenusPallas": {
+            "type": 60,
+            "name": "Sextile",
+            "orb": {
+                "orb": 3.0
+            },
+            "error": 2.181979925646175,
+            "active": "Venus",
+            "passive": "Pallas",
+            "isMutualAspect": false,
+            "isMutualMovement": false
+        },
+        "VenusJuno": {
+            "type": 120,
+            "name": "Trine",
+            "orb": {
+                "orb": 5.0
+            },
+            "error": 2.4383153532456845,
+            "active": "Venus",
+            "passive": "Juno",
+            "isMutualAspect": false,
+            "isMutualMovement": false
+        },
+        "MarsCeres": {
+            "type": 90,
+            "name": "Square",
+            "orb": {
+                "orb": 5.0
+            },
+            "error": 0.6213912405401913,
+            "active": "Mars",
+            "passive": "Ceres",
+            "isMutualAspect": false,
+            "isMutualMovement": false
+        },
+        "MarsJuno": {
+            "type": 120,
+            "name": "Trine",
+            "orb": {
+                "orb": 5.0
+            },
+            "error": 4.38965848704612,
+            "active": "Mars",
+            "passive": "Juno",
+            "isMutualAspect": false,
+            "isMutualMovement": false
+        },
+        "JupiterSaturn": {
+            "type": 0,
+            "name": "Conjunction",
+            "orb": {
+                "orb": 6.0
+            },
+            "error": 2.1896767657406144,
+            "active": "Jupiter",
+            "passive": "Saturn",
+            "isMutualAspect": false,
+            "isMutualMovement": false
+        },
+        "JupiterCeres": {
+            "type": 120,
+            "name": "Trine",
+            "orb": {
+                "orb": 5.0
+            },
+            "error": 3.1650608551725554,
+            "active": "Ceres",
+            "passive": "Jupiter",
+            "isMutualAspect": false,
+            "isMutualMovement": false
+        },
+        "JupiterPallas": {
+            "type": 90,
+            "name": "Square",
+            "orb": {
+                "orb": 5.0
+            },
+            "error": 0.3468709637338634,
+            "active": "Pallas",
+            "passive": "Jupiter",
+            "isMutualAspect": false,
+            "isMutualMovement": false
+        },
+        "JupiterJuno": {
+            "type": 90,
+            "name": "Square",
+            "orb": {
+                "orb": 5.0
+            },
+            "error": 0.6032063913333445,
+            "active": "Jupiter",
+            "passive": "Juno",
+            "isMutualAspect": false,
+            "isMutualMovement": false
+        },
+        "JupiterVesta": {
+            "type": 120,
+            "name": "Trine",
+            "orb": {
+                "orb": 5.0
+            },
+            "error": 2.831659216074229,
+            "active": "Jupiter",
+            "passive": "Vesta",
+            "isMutualAspect": false,
+            "isMutualMovement": true
+        },
+        "JupiterNorthNode": {
+            "type": 60,
+            "name": "Sextile",
+            "orb": {
+                "orb": 3.0
+            },
+            "error": 1.3216573375450622,
+            "active": "Jupiter",
+            "passive": "NorthNode",
+            "isMutualAspect": false,
+            "isMutualMovement": true
+        },
+        "JupiterSouthNode": {
+            "type": 120,
+            "name": "Trine",
+            "orb": {
+                "orb": 5.0
+            },
+            "error": 1.321657337545048,
+            "active": "Jupiter",
+            "passive": "SouthNode",
+            "isMutualAspect": false,
+            "isMutualMovement": true
+        },
+        "JupiterFortune": {
+            "type": 0,
+            "name": "Conjunction",
+            "orb": {
+                "orb": 6.0
+            },
+            "error": 0.39870593451212244,
+            "active": "Jupiter",
+            "passive": "Fortune",
+            "isMutualAspect": false,
+            "isMutualMovement": false
+        },
+        "SaturnUranus": {
+            "type": 90,
+            "name": "Square",
+            "orb": {
+                "orb": 5.0
+            },
+            "error": 4.6360580770095225,
+            "active": "Saturn",
+            "passive": "Uranus",
+            "isMutualAspect": false,
+            "isMutualMovement": true
+        },
+        "SaturnPallas": {
+            "type": 90,
+            "name": "Square",
+            "orb": {
+                "orb": 5.0
+            },
+            "error": 1.842805802006751,
+            "active": "Pallas",
+            "passive": "Saturn",
+            "isMutualAspect": false,
+            "isMutualMovement": false
+        },
+        "SaturnJuno": {
+            "type": 90,
+            "name": "Square",
+            "orb": {
+                "orb": 5.0
+            },
+            "error": 1.58647037440727,
+            "active": "Saturn",
+            "passive": "Juno",
+            "isMutualAspect": false,
+            "isMutualMovement": false
+        },
+        "SaturnNorthNode": {
+            "type": 60,
+            "name": "Sextile",
+            "orb": {
+                "orb": 3.0
+            },
+            "error": 0.8680194281955593,
+            "active": "Saturn",
+            "passive": "NorthNode",
+            "isMutualAspect": false,
+            "isMutualMovement": true
+        },
+        "SaturnSouthNode": {
+            "type": 120,
+            "name": "Trine",
+            "orb": {
+                "orb": 5.0
+            },
+            "error": 0.8680194281955664,
+            "active": "Saturn",
+            "passive": "SouthNode",
+            "isMutualAspect": false,
+            "isMutualMovement": true
+        },
+        "SaturnFortune": {
+            "type": 0,
+            "name": "Conjunction",
+            "orb": {
+                "orb": 6.0
+            },
+            "error": 1.7909708312284849,
+            "active": "Saturn",
+            "passive": "Fortune",
+            "isMutualAspect": false,
+            "isMutualMovement": false
+        },
+        "UranusIC": {
+            "type": 0,
+            "name": "Conjunction",
+            "orb": {
+                "orb": 6.0
+            },
+            "error": 5.888674573813034,
+            "active": "Uranus",
+            "passive": "IC",
+            "isMutualAspect": false,
+            "isMutualMovement": false
+        },
+        "UranusArmC": {
+            "type": 180,
+            "name": "Opposition",
+            "orb": {
+                "orb": 5.0
+            },
+            "error": 3.4238394472167215,
+            "active": "Uranus",
+            "passive": "ArmC",
+            "isMutualAspect": false,
+            "isMutualMovement": false
+        },
+        "NeptuneVesta": {
+            "type": 0,
+            "name": "Conjunction",
+            "orb": {
+                "orb": 6.0
+            },
+            "error": 5.896795419904038,
+            "active": "Vesta",
+            "passive": "Neptune",
+            "isMutualAspect": false,
+            "isMutualMovement": false
+        },
+        "PlutoChiron": {
+            "type": 0,
+            "name": "Conjunction",
+            "orb": {
+                "orb": 6.0
+            },
+            "error": 2.0674670072051526,
+            "active": "Chiron",
+            "passive": "Pluto",
+            "isMutualAspect": false,
+            "isMutualMovement": false
+        },
+        "PlutoMC": {
+            "type": 120,
+            "name": "Trine",
+            "orb": {
+                "orb": 5.0
+            },
+            "error": 3.6083128672297846,
+            "active": "Pluto",
+            "passive": "MC",
+            "isMutualAspect": false,
+            "isMutualMovement": false
+        },
+        "CeresVesta": {
+            "type": 120,
+            "name": "Trine",
+            "orb": {
+                "orb": 5.0
+            },
+            "error": 0.33340163909835496,
+            "active": "Ceres",
+            "passive": "Vesta",
+            "isMutualAspect": false,
+            "isMutualMovement": true
+        },
+        "CeresSouthNode": {
+            "type": 120,
+            "name": "Trine",
+            "orb": {
+                "orb": 5.0
+            },
+            "error": 4.486718192717632,
+            "active": "Ceres",
+            "passive": "SouthNode",
+            "isMutualAspect": false,
+            "isMutualMovement": true
+        },
+        "CeresFortune": {
+            "type": 120,
+            "name": "Trine",
+            "orb": {
+                "orb": 5.0
+            },
+            "error": 3.5637667896847063,
+            "active": "Ceres",
+            "passive": "Fortune",
+            "isMutualAspect": false,
+            "isMutualMovement": false
+        },
+        "PallasJuno": {
+            "type": 180,
+            "name": "Opposition",
+            "orb": {
+                "orb": 5.0
+            },
+            "error": 0.25633542759950956,
+            "active": "Pallas",
+            "passive": "Juno",
+            "isMutualAspect": false,
+            "isMutualMovement": true
+        },
+        "PallasFortune": {
+            "type": 90,
+            "name": "Square",
+            "orb": {
+                "orb": 5.0
+            },
+            "error": 0.05183497077825905,
+            "active": "Pallas",
+            "passive": "Fortune",
+            "isMutualAspect": false,
+            "isMutualMovement": true
+        },
+        "JunoFortune": {
+            "type": 90,
+            "name": "Square",
+            "orb": {
+                "orb": 5.0
+            },
+            "error": 0.2045004568212221,
+            "active": "Juno",
+            "passive": "Fortune",
+            "isMutualAspect": false,
+            "isMutualMovement": true
+        },
+        "VestaNorthNode": {
+            "type": 180,
+            "name": "Opposition",
+            "orb": {
+                "orb": 5.0
+            },
+            "error": 4.153316553619277,
+            "active": "Vesta",
+            "passive": "NorthNode",
+            "isMutualAspect": false,
+            "isMutualMovement": false
+        },
+        "VestaSouthNode": {
+            "type": 0,
+            "name": "Conjunction",
+            "orb": {
+                "orb": 6.0
+            },
+            "error": 4.153316553619277,
+            "active": "Vesta",
+            "passive": "SouthNode",
+            "isMutualAspect": false,
+            "isMutualMovement": false
+        },
+        "VestaFortune": {
+            "type": 120,
+            "name": "Trine",
+            "orb": {
+                "orb": 5.0
+            },
+            "error": 3.2303651505863513,
+            "active": "Vesta",
+            "passive": "Fortune",
+            "isMutualAspect": false,
+            "isMutualMovement": false
+        },
+        "ChironMC": {
+            "type": 120,
+            "name": "Trine",
+            "orb": {
+                "orb": 5.0
+            },
+            "error": 1.540845860024632,
+            "active": "Chiron",
+            "passive": "MC",
+            "isMutualAspect": false,
+            "isMutualMovement": false
+        },
+        "ChironIC": {
+            "type": 60,
+            "name": "Sextile",
+            "orb": {
+                "orb": 3.0
+            },
+            "error": 1.540845860024632,
+            "active": "Chiron",
+            "passive": "IC",
+            "isMutualAspect": false,
+            "isMutualMovement": false
+        },
+        "ChironArmC": {
+            "type": 120,
+            "name": "Trine",
+            "orb": {
+                "orb": 5.0
+            },
+            "error": 4.005680986620945,
+            "active": "Chiron",
+            "passive": "ArmC",
+            "isMutualAspect": false,
+            "isMutualMovement": false
+        }
+    },
+    "dignities": {
+        "Sun": {
+            "Sun": {
+                "string": "1",
+                "score": 1
+            },
+            "Moon": {
+                "string": "",
+                "score": 0
+            },
+            "Mercury": {
+                "string": "53",
+                "score": 8
+            },
+            "Venus": {
+                "string": "",
+                "score": 0
+            },
+            "Mars": {
+                "string": "",
+                "score": 0
+            },
+            "Jupiter": {
+                "string": "3",
+                "score": 3
+            },
+            "Saturn": {
+                "string": "32",
+                "score": 5
+            }
+        },
+        "Moon": {
+            "Sun": {
+                "string": "",
+                "score": 0
+            },
+            "Moon": {
+                "string": "3",
+                "score": 3
+            },
+            "Mercury": {
+                "string": "",
+                "score": 0
+            },
+            "Venus": {
+                "string": "3",
+                "score": 3
+            },
+            "Mars": {
+                "string": "431",
+                "score": 8
+            },
+            "Jupiter": {
+                "string": "2",
+                "score": 2
+            },
+            "Saturn": {
+                "string": "5",
+                "score": 5
+            }
+        },
+        "Mercury": {
+            "Sun": {
+                "string": "",
+                "score": 0
+            },
+            "Moon": {
+                "string": "53",
+                "score": 8
+            },
+            "Mercury": {
+                "string": "21",
+                "score": 3
+            },
+            "Venus": {
+                "string": "3",
+                "score": 3
+            },
+            "Mars": {
+                "string": "3",
+                "score": 3
+            },
+            "Jupiter": {
+                "string": "4",
+                "score": 4
+            },
+            "Saturn": {
+                "string": "",
+                "score": 0
+            }
+        },
+        "Venus": {
+            "Sun": {
+                "string": "1",
+                "score": 1
+            },
+            "Moon": {
+                "string": "",
+                "score": 0
+            },
+            "Mercury": {
+                "string": "53",
+                "score": 8
+            },
+            "Venus": {
+                "string": "",
+                "score": 0
+            },
+            "Mars": {
+                "string": "",
+                "score": 0
+            },
+            "Jupiter": {
+                "string": "3",
+                "score": 3
+            },
+            "Saturn": {
+                "string": "32",
+                "score": 5
+            }
+        },
+        "Mars": {
+            "Sun": {
+                "string": "",
+                "score": 0
+            },
+            "Moon": {
+                "string": "53",
+                "score": 8
+            },
+            "Mercury": {
+                "string": "",
+                "score": 0
+            },
+            "Venus": {
+                "string": "31",
+                "score": 4
+            },
+            "Mars": {
+                "string": "32",
+                "score": 5
+            },
+            "Jupiter": {
+                "string": "4",
+                "score": 4
+            },
+            "Saturn": {
+                "string": "",
+                "score": 0
+            }
+        },
+        "Jupiter": {
+            "Sun": {
+                "string": "",
+                "score": 0
+            },
+            "Moon": {
+                "string": "43",
+                "score": 7
+            },
+            "Mercury": {
+                "string": "",
+                "score": 0
+            },
+            "Venus": {
+                "string": "53",
+                "score": 8
+            },
+            "Mars": {
+                "string": "32",
+                "score": 5
+            },
+            "Jupiter": {
+                "string": "",
+                "score": 0
+            },
+            "Saturn": {
+                "string": "1",
+                "score": 1
+            }
+        },
+        "Saturn": {
+            "Sun": {
+                "string": "",
+                "score": 0
+            },
+            "Moon": {
+                "string": "43",
+                "score": 7
+            },
+            "Mercury": {
+                "string": "",
+                "score": 0
+            },
+            "Venus": {
+                "string": "53",
+                "score": 8
+            },
+            "Mars": {
+                "string": "3",
+                "score": 3
+            },
+            "Jupiter": {
+                "string": "",
+                "score": 0
+            },
+            "Saturn": {
+                "string": "21",
+                "score": 3
+            }
+        }
+    }
+}

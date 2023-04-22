@@ -1,0 +1,197 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DIRECT_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model Account {
+  id                 String  @id @default(cuid())
+  userId             Int
+  type               String
+  provider           String
+  providerAccountId  String
+  refresh_token      String?  @db.Text
+  access_token       String?  @db.Text
+  expires_at         Int?
+  token_type         String?
+  scope              String?
+  id_token           String?  @db.Text
+  session_state      String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       Int
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model User {
+  email            String?            @unique
+  avatar           String?           
+  config           Json?
+  createdAt        DateTime          @default(now())
+  password            String?            
+  phone            String?           @unique
+  updatedAt        DateTime          @updatedAt
+  username         String?           
+  id               Int            @id @unique @default(autoincrement())
+  accounts         Account[]
+  astroModels      AstroModel[]
+  blogPosts        BlogPost[]
+  comments         Comment[]
+  favoritesFolders FavoritesFolder[]
+  forks            Fork[]
+  likes            Like[]
+  aliases          ModelAlias[]
+  sessions         Session[]
+  followers        UserFollow[]      @relation("Followers")
+  following        UserFollow[]      @relation("Following")
+}
+
+model UserFollow {
+  id          Int      @id @default(autoincrement())
+  followerId  Int
+  followingId Int
+  createdAt   DateTime @default(now())
+  follower    User     @relation("Followers", fields: [followerId], references: [id])
+  following   User     @relation("Following", fields: [followingId], references: [id])
+}
+
+model AstroModel {
+  id               Int                   @id @default(autoincrement())
+  title            String
+  description      String?
+  content          Json
+  type             AstroType
+  accessMode       AccessMode            @default(VIEW)
+  visibility       Visibility            @default(PUBLIC)
+  ownerId          Int
+  createdAt        DateTime              @default(now())
+  updatedAt        DateTime              @updatedAt
+  owner            User                  @relation(fields: [ownerId], references: [id])
+  blogPostRefs     BlogPost[]
+  comments         Comment[]
+  favoritesFolders FavoritesFolderItem[]
+  forks            Fork[]
+  likes            Like[]
+  aliases          ModelAlias[]
+}
+
+model BlogPost {
+  id           Int         @id @default(autoincrement())
+  title        String
+  content      String
+  authorId     Int
+  astroModelId Int?
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+  astroModel   AstroModel? @relation(fields: [astroModelId], references: [id])
+  author       User        @relation(fields: [authorId], references: [id])
+  comments     Comment[]
+  likes        Like[]
+}
+
+model Like {
+  id           Int         @id @default(autoincrement())
+  userId       Int
+  likedAt      DateTime    @default(now())
+  blogPostId   Int?
+  astroModelId Int?
+  commentId    Int?
+  astroModel   AstroModel? @relation(fields: [astroModelId], references: [id])
+  blogPost     BlogPost?   @relation(fields: [blogPostId], references: [id])
+  comment      Comment?    @relation(fields: [commentId], references: [id])
+  user         User        @relation(fields: [userId], references: [id])
+}
+
+model Comment {
+  id           Int         @id @default(autoincrement())
+  content      String
+  userId       Int
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+  astroModelId Int?
+  blogPostId   Int?
+  astroModel   AstroModel? @relation(fields: [astroModelId], references: [id])
+  blogPost     BlogPost?   @relation(fields: [blogPostId], references: [id])
+  user         User        @relation(fields: [userId], references: [id])
+  likes        Like[]
+}
+
+model Fork {
+  id          Int        @id @default(autoincrement())
+  title       String
+  description String?
+  content     Json
+  ownerId     Int
+  originalId  Int
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  original    AstroModel @relation(fields: [originalId], references: [id])
+  owner       User       @relation(fields: [ownerId], references: [id])
+}
+
+model ModelAlias {
+  id           Int        @id @default(autoincrement())
+  userId       Int
+  astroModelId Int
+  alias        String
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  astroModel   AstroModel @relation(fields: [astroModelId], references: [id])
+  user         User       @relation(fields: [userId], references: [id])
+}
+
+model FavoritesFolder {
+  id        Int                   @id @default(autoincrement())
+  name      String
+  userId    Int
+  createdAt DateTime              @default(now())
+  updatedAt DateTime              @updatedAt
+  user      User                  @relation(fields: [userId], references: [id])
+  items     FavoritesFolderItem[]
+}
+
+model FavoritesFolderItem {
+  id           Int             @id @default(autoincrement())
+  folderId     Int
+  astroModelId Int
+  createdAt    DateTime        @default(now())
+  updatedAt    DateTime        @updatedAt
+  astroModel   AstroModel      @relation(fields: [astroModelId], references: [id])
+  folder       FavoritesFolder @relation(fields: [folderId], references: [id])
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+enum AstroType {
+  NATAL_CHART
+  BAZI_CHART
+}
+
+enum Visibility {
+  PUBLIC
+  LINK
+  PRIVATE
+}
+
+enum AccessMode {
+  VIEW
+  EDIT
+}
