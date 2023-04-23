@@ -26,8 +26,8 @@ const NavLink = ({
   // }
   const createClassNames = () => {
     return isSelected
-      ? " text-cyan-500 hover:text-cyan-400"
-      : " text-gray-500 hover:text-gray-400";
+      ? " text-fuchsia-600 hover:text-fuchsia-500"
+      : " text-gray-600 hover:text-gray-500";
   };
 
   useEffect(() => {
