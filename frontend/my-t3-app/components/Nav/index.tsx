@@ -1,4 +1,4 @@
-import { createContext, useEffect, useRef, useState } from "react";
+import { memo, useCallback, useEffect, useRef, useState } from "react";
 import NavLink from "./NavLink";
 import SpringIndicator from "./SpringIndicator";
 
@@ -17,21 +17,14 @@ const navLinkObjects = [
   },
 ];
 
-export const SelectedLinkContext = createContext(navLinkObjects[0]?.text);
-
 const isColliding = (rect1: DOMRect, rect2: DOMRect) => {
   return rect1.top < rect2.bottom && rect1.bottom > rect2.top;
 };
 
-export default function NavBar({
-  graph,
-}: {
-  graph: React.RefObject<HTMLDivElement>;
-}) {
-  const [sliderPosition, setSliderPosition] = useState({ left: 0, width: 0 });
-  const [prevSliderPosition, setPrevSliderPosition] = useState({
-    left: 0,
-    width: 0,
+const NavBar = ({ graph }: { graph: React.RefObject<HTMLDivElement> }) => {
+  const [sliderPositions, setSliderPositions] = useState({
+    current: { left: 0, width: 0 },
+    previous: { left: 0, width: 0 },
   });
   const navBarRef = useRef<HTMLDivElement>(null);
   const [selectedLink, setSelectedLink] = useState(navLinkObjects[0]?.text);
@@ -55,23 +48,29 @@ export default function NavBar({
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+  }, [graph]);
+
+  const setLinkAndSlider = useCallback(
+    (text: string, navLink: HTMLDivElement) => {
+      setSelectedLink(text);
+      setSliderPositions((prevState) => ({
+        current: {
+          left: navLink.offsetLeft,
+          width: navLink.offsetWidth,
+        },
+        previous: prevState.current,
+      }));
+    },
+    []
+  );
+
+  const handleMenuClick = useCallback(() => {
+    // using functional update to avoid stale closure
+    // it is recommended to use functional update when the new state is based on the previous
+    // state, especially when the update is asynchronous
+    // or when updating in useEffect and useCallback
+    setIsMenuOpen((prevState) => !prevState);
   }, []);
-
-  const setLink = (text: string) => {
-    setSelectedLink(text);
-  };
-
-  const setSlider = (e: HTMLElement) => {
-    setPrevSliderPosition({ ...sliderPosition });
-    setSliderPosition({
-      left: e.offsetLeft,
-      width: e.offsetWidth,
-    });
-  };
-
-  const handleMenuClick = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
 
   const getNavBarClassNames = () => {
     const common =
@@ -83,63 +82,66 @@ export default function NavBar({
           common;
   };
 
-  const NavLinkItems = () => {
+  const NavLinkItems = memo(function NavLinkItems() {
+    // When NavLinkItems is memoised, there is no need to memoise NavLink (child component)
+    // Memoisation of NavLinkItems will only perserve NavLinkItems when other parts of NavBar re-renders
+    // but will not preserve when there's a change in NavLink (by its props)
     return (
-      <div>
-        <div className="trans ml-10 flex h-full w-full flex-row items-center gap-12">
-          {navLinkObjects.map((navLinkObject) => (
-            <div key={navLinkObject.text}>
-              <NavLink
-                text={navLinkObject.text}
-                href={navLinkObject.href}
-                setLink={setLink}
-                setSlider={setSlider}
-              />
-            </div>
-          ))}
-          {/* because the priority of operand + is higher, remaining contents must be quoted by a bracket. */}
-          <div
-            className={
-              "text-xl font-semibold text-white/50 hover:text-white/70 " +
-              (isCollided
-                ? "animate-fade-in cursor-pointer"
-                : "hidden cursor-pointer")
-            }
-            onClick={handleMenuClick}
-          >
-            缩小
+      <div className="trans ml-10 flex h-full w-full flex-row items-center gap-12">
+        {navLinkObjects.map((navLinkObject) => (
+          <div key={navLinkObject.text}>
+            <NavLink
+              text={navLinkObject.text}
+              href={navLinkObject.href}
+              onLinkActive={setLinkAndSlider}
+              isSelected={selectedLink === navLinkObject.text}
+            />
           </div>
+        ))}
+        {/* because the priority of operand + is higher, remaining contents must be quoted by a bracket. */}
+        <div
+          className={
+            "text-xl font-semibold text-white/70 hover:text-white/80 " +
+            (isCollided
+              ? "animate-fade-in cursor-pointer"
+              : "hidden cursor-pointer")
+          }
+          onClick={handleMenuClick}
+        >
+          缩小
         </div>
-        <SpringIndicator
-          fromOption={{
-            left: prevSliderPosition.left,
-            width: prevSliderPosition.width,
-          }}
-          toOption={{
-            left: sliderPosition.left,
-            width: sliderPosition.width,
-          }}
-          config={{ mass: 1, tension: 230, friction: 20 }}
-          classNames="absolute float z-10 bottom-0 h-2 rounded-md bg-fuchsia-600 dark:bg-fuchsia-500"
-        />
       </div>
     );
-  };
+  });
 
   return (
     <div ref={navBarRef} className={getNavBarClassNames()}>
-      <SelectedLinkContext.Provider value={selectedLink}>
-        {!isCollided || isMenuOpen ? (
+      {!isCollided || isMenuOpen ? (
+        <div>
           <NavLinkItems />
-        ) : (
-          <span
-            onClick={handleMenuClick}
-            className="font-sans text-3xl font-bold text-fuchsia-600 dark:text-fuchsia-500"
-          >
-            ≣
-          </span>
-        )}
-      </SelectedLinkContext.Provider>
+          <SpringIndicator
+            fromOption={{
+              left: sliderPositions.previous.left,
+              width: sliderPositions.previous.width,
+            }}
+            toOption={{
+              left: sliderPositions.current.left,
+              width: sliderPositions.current.width,
+            }}
+            config={{ mass: 1, tension: 230, friction: 20 }}
+            classNames="absolute float z-10 bottom-0 h-2 rounded-md bg-fuchsia-600 dark:bg-fuchsia-500"
+          />
+        </div>
+      ) : (
+        <span
+          onClick={handleMenuClick}
+          className="font-sans text-3xl font-bold text-fuchsia-600 dark:text-fuchsia-500"
+        >
+          ≣
+        </span>
+      )}
     </div>
   );
-}
+};
+
+export default NavBar;

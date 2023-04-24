@@ -1,6 +1,4 @@
 import { animated, useSpring } from "@react-spring/web";
-import { useContext } from "react";
-import { SelectedLinkContext } from ".";
 
 const SpringIndicator = ({
   fromOption,
