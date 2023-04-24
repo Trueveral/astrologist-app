@@ -26,8 +26,8 @@ const NavLink = ({
   // }
   const createClassNames = () => {
     return isSelected
-      ? " text-fuchsia-600 hover:text-fuchsia-500"
-      : " text-gray-600 hover:text-gray-500";
+      ? " text-fuchsia-600 hover:text-fuchsia-500 dark:text-fuchsia-400 dark:hover:text-fuchsia-300 transition-all"
+      : " text-gray-600 hover:text-gray-500 dark:text-white/50 hover:dark:text-white/70 transition-all";
   };
 
   useEffect(() => {
@@ -38,8 +38,7 @@ const NavLink = ({
     <div
       ref={navLinkRef}
       className={
-        "cursor-pointer font-sans text-xl font-semibold transition-all" +
-        createClassNames()
+        "cursor-pointer font-sans text-xl font-semibold" + createClassNames()
       }
     >
       <Link

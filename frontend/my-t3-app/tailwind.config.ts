@@ -31,6 +31,23 @@ export default {
         "4xl": "2.441rem",
         "5xl": "3.052rem",
       },
+      keyframes: {
+        "fade-in": {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
+        "fade-out": {
+          "0%": { opacity: "1" },
+          "100%": { opacity: "0" },
+        },
+      },
+      animation: {
+        "fade-in": "fade-in 0.5s ease-in-out",
+        "fade-out": "fade-out 0.5s ease-in-out",
+      },
+      transitionTimingFunction: {
+        dynamicIsland: "cubic-bezier(.03,.99,.48,1)",
+      },
     },
   },
   plugins: [],

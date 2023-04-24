@@ -1,10 +1,6 @@
 import { useRef } from "react";
 
-export default function AstroGraph({
-  ref,
-}: {
-  ref: React.MutableRefObject<HTMLDivElement>;
-}) {
+export default function AstroGraph() {
   const graphRef = useRef<HTMLDivElement>(null);
   return (
     <div ref={graphRef} className="h-fit w-fit">
