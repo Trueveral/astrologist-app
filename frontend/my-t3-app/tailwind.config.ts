@@ -25,6 +25,8 @@ export default {
       boxShadow: {
         graph:
           "20px 60px 100px rgba(123, 92, 147, 0.25), inset 20px 20px 60px rgba(255, 255, 255, 0.9)",
+        navBar: "inset 0px 0px 100px #f5f3ff",
+        navBarDark: "inset 0px 0px 100px #1e1b4b",
       },
       fontSize: {
         "3xl": "1.953rem",
@@ -40,10 +42,24 @@ export default {
           "0%": { opacity: "1" },
           "100%": { opacity: "0" },
         },
+        "dynamic-shrink": {
+          "0%": { width: "66.666667%", height: "3.5rem" },
+          "30%": { width: "3.8rem", height: "4rem" },
+          "100%": { width: "4rem", height: "4rem" },
+        },
+        "dynamic-grow": {
+          "0%": { width: "4rem", height: "4rem" },
+          "30%": { width: "69.0%", height: "3.5rem" },
+          "100%": { width: "66.666667%", height: "3.5rem" },
+        },
       },
       animation: {
-        "fade-in": "fade-in 0.5s ease-in-out",
-        "fade-out": "fade-out 0.5s ease-in-out",
+        "fade-in": "fade-in 0.5s ease-in-out forwards",
+        "fade-out": "fade-out 0.5s ease-in-out forwards",
+        "dynamic-shrink":
+          "dynamic-shrink 2s cubic-bezier(.05,.93,.52,.98) forwards",
+        "dynamic-grow":
+          "dynamic-grow 3s cubic-bezier(.05,.93,.52,.98) forwards",
       },
       transitionTimingFunction: {
         dynamicIsland: "cubic-bezier(.03,.99,.48,1)",

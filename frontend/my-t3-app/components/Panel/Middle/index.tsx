@@ -1,4 +1,3 @@
-import { useRef, useState } from "react";
 import SizeButton from "./Controls/SizeButton";
 import AstroGraph from "./Graph";
 

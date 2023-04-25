@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { useRef, useState } from "react";
+import { memo, useRef } from "react";
 
 // 从 props 中解构出 text, href, handleSelect
 // 原先的写法是 const NavLink = (props) => {text, href, handleSelect} = props
@@ -55,28 +55,26 @@ const NavLink = ({
   text,
   href,
   onLinkActive,
-  isSelected,
+  isActive,
 }: {
   text: string;
   href: string;
   onLinkActive: (text: string, navLink: HTMLDivElement) => void;
-  isSelected: boolean;
+  isActive: boolean;
 }) => {
   const navLinkRef = useRef<HTMLDivElement>(null);
-  const [isActive, setIsActive] = useState<boolean>(false);
 
   // TODO: use when other pages are added
   // if (window.location.href === `http://localhost:3000${href}`) {
   //   setIsSelected(true);
   // }
   const createClassNames = () => {
-    return isSelected
-      ? " text-fuchsia-600 hover:text-fuchsia-500 dark:text-fuchsia-400 dark:hover:text-fuchsia-300 transition-all"
-      : " text-gray-600 hover:text-gray-500 dark:text-white/50 hover:dark:text-white/70 transition-all";
+    return isActive
+      ? "text-fuchsia-600 hover:text-fuchsia-500 dark:text-fuchsia-400 dark:hover:text-fuchsia-300 transition-all"
+      : "text-gray-600 hover:text-gray-500 dark:text-gray-400 hover:dark:text-gray-300 transition-all";
   };
 
   const handleClick = () => {
-    setIsActive(!isActive);
     onLinkActive(text, navLinkRef.current as HTMLDivElement);
   };
 
@@ -84,7 +82,8 @@ const NavLink = ({
     <div
       ref={navLinkRef}
       className={
-        "cursor-pointer font-sans text-xl font-semibold" + createClassNames()
+        "animate-fade-in cursor-pointer font-sans text-xl font-semibold " +
+        createClassNames()
       }
     >
       <Link href={href} onClick={handleClick}>
