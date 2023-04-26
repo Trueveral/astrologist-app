@@ -1,4 +1,4 @@
-import { useRef, useCallback, useEffect } from "react";
+import { useRef, useEffect } from "react";
 
 const PlanetButton = ({ name }: { name: string }) => {
   const selfRef = useRef<HTMLButtonElement>(null);

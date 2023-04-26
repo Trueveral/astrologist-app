@@ -17,7 +17,7 @@ const navLinkObjects = [
   },
 ];
 
-const isColliding = (rect1: DOMRect, rect2: DOMRect) => {
+const detectCollision = (rect1: DOMRect, rect2: DOMRect) => {
   return rect1.top < rect2.bottom && rect1.bottom > rect2.top;
 };
 
@@ -54,28 +54,22 @@ const NavLinkItems = ({
   selectedLink: string;
   handleMenuClick: () => void;
   setLinkAndSlider: (text: string, navLink: HTMLDivElement) => void;
-}) => {
-  // When NavLinkItems is memoised, there is no need to memoise NavLink (child component)
-  // Memoisation of NavLinkItems will only perserve NavLinkItems when other parts of NavBar re-renders
-  // but will not preserve when there's a change in NavLink (by its props)\
-
-  return (
-    <div className="trans z-10 ml-10 flex h-full w-full flex-row items-center gap-12">
-      {navLinkObjects.map((navLinkObject) => (
-        <div key={navLinkObject.text}>
-          <NavLink
-            text={navLinkObject.text}
-            href={navLinkObject.href}
-            onLinkActive={setLinkAndSlider}
-            isActive={selectedLink === navLinkObject.text}
-          />
-        </div>
-      ))}
-      {/* because the priority of operand + is higher, remaining contents must be quoted by a bracket. */}
-      <CollapseButton isCollided={isCollided} onClick={handleMenuClick} />
-    </div>
-  );
-};
+}) => (
+  /* When NavLinkItems is memoised, there is no need to memoise NavLink (child component)*/ /* Memoisation of NavLinkItems will only perserve NavLinkItems when other parts of NavBar re-renders*/ /* but will not preserve when there's a change in NavLink (by its props)\*/ <div className="trans z-10 ml-10 flex h-full w-full flex-row items-center gap-12">
+    {navLinkObjects.map((navLinkObject) => (
+      <div key={navLinkObject.text}>
+        <NavLink
+          text={navLinkObject.text}
+          href={navLinkObject.href}
+          onLinkActive={setLinkAndSlider}
+          isActive={selectedLink === navLinkObject.text}
+        />
+      </div>
+    ))}
+    {/* because the priority of operand + is higher, remaining contents must be quoted by a bracket. */}
+    <CollapseButton isCollided={isCollided} onClick={handleMenuClick} />
+  </div>
+);
 
 const NavBar = ({ graph }: { graph: React.RefObject<HTMLDivElement> }) => {
   const [sliderPositions, setSliderPositions] = useState({
@@ -103,7 +97,7 @@ const NavBar = ({ graph }: { graph: React.RefObject<HTMLDivElement> }) => {
       // make sure to get the newest rect after the scroll event
       const rectSelf = navBarRef.current?.getBoundingClientRect() as DOMRect;
       const rectGraph = graph.current?.getBoundingClientRect() as DOMRect;
-      if (isColliding(rectSelf, rectGraph)) {
+      if (detectCollision(rectSelf, rectGraph)) {
         setIsCollided(true);
       } else {
         setIsCollided(false);
