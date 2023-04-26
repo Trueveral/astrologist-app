@@ -1,0 +1,17 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "npm",
+      "script": "dev",
+      "path": "my-t3-app",
+      "problemMatcher": [],
+      "label": "npm: dev - my-t3-app",
+      "detail": "next dev",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    }
+  ]
+}

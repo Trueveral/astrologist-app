@@ -8,7 +8,7 @@ const Info = ({
   pos: string;
 }) => {
   return (
-    <div className="mt-15 ml-10 flex h-fit w-fit flex-col items-start justify-start bg-title bg-clip-text text-transparent">
+    <div className="mt-15 ml-10 flex h-fit min-w-fit select-none flex-col items-start justify-start bg-title bg-clip-text text-transparent motion-safe:animate-fade-in">
       <div className="text-3xl font-extrabold">{name}</div>
       <div className="text-2xl font-bold">{date}</div>
       <div className="text-2xl font-bold">{pos}</div>

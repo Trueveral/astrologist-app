@@ -52,6 +52,16 @@ export default {
           "30%": { width: "69.0%", height: "3.5rem" },
           "100%": { width: "66.666667%", height: "3.5rem" },
         },
+        "pop-up": {
+          "0%": { transform: "scale(0)" },
+          "50%": { transform: "scale(1.1)" },
+          "100%": { transform: "scale(1)" },
+        },
+        "pop-out": {
+          "0%": { transform: "scale(1)" },
+          "50%": { transform: "scale(1.1)" },
+          "100%": { transform: "scale(0)" },
+        },
       },
       animation: {
         "fade-in": "fade-in 0.5s ease-in-out forwards",
@@ -60,6 +70,8 @@ export default {
           "dynamic-shrink 2s cubic-bezier(.05,.93,.52,.98) forwards",
         "dynamic-grow":
           "dynamic-grow 3s cubic-bezier(.05,.93,.52,.98) forwards",
+        "pop-up": "pop-up 1s ease-in-out",
+        "pop-out": "pop-out 1s ease-in-out",
       },
       transitionTimingFunction: {
         dynamicIsland: "cubic-bezier(.03,.99,.48,1)",

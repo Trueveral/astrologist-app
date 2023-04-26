@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { memo, useRef } from "react";
+import { useRef } from "react";
 
 // 从 props 中解构出 text, href, handleSelect
 // 原先的写法是 const NavLink = (props) => {text, href, handleSelect} = props
@@ -82,7 +82,7 @@ const NavLink = ({
     <div
       ref={navLinkRef}
       className={
-        "animate-fade-in cursor-pointer font-sans text-xl font-semibold " +
+        "animate-fade-in cursor-pointer select-none font-sans text-xl font-semibold " +
         createClassNames()
       }
     >
