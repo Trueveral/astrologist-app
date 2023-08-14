@@ -1,206 +1,215 @@
-import { useCallback, useEffect, useRef, useState } from "react";
-import NavLink from "./NavLink";
-import SpringIndicator from "./SpringIndicator";
+import { useSpring, a, to } from "react-spring";
+import { useGesture } from "react-use-gesture";
+import { useEffect, useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  type NavbarState,
+  setNavbarCollapsed,
+  setNavbarHoveredLink,
+} from "@redux/navbar/navbarSlice";
+import NavLink from "./Link";
+import Detail, { type ColContent } from "./Detail";
+import { store, type RootState } from "~/redux/store";
+import { panelDetails, profileDetails } from "./fakeData";
+const calcX = (y: number, ly: number) =>
+  -(y - ly - window.innerHeight / 2) / 30;
+const calcY = (x: number, lx: number) => (x - lx - window.innerWidth / 2) / 30;
 
-const navLinkObjects = [
-  {
-    text: "星图",
-    href: "",
-  },
-  {
-    text: "档案",
-    href: "",
-  },
-  {
-    text: "工具",
-    href: "",
-  },
-];
-
-const detectCollision = (rect1: DOMRect, rect2: DOMRect) => {
-  return rect1.top < rect2.bottom && rect1.bottom > rect2.top;
-};
-
-// ! DO NOT DEFINE COMPONENTS INSIDE OTHER COMPONENTS
-const CollapseButton = ({
-  isCollided,
-  onClick,
-}: {
-  isCollided: boolean;
-  onClick: () => void;
-}) => {
-  return (
-    <div
-      className={
-        "text-xl font-semibold text-white/70 hover:text-white/80 " +
-        (isCollided ? "animate-fade-in cursor-pointer" : "hidden")
-      }
-      onClick={onClick}
-    >
-      缩小
-    </div>
+export default function NavBar() {
+  const [collided, setCollided] = useState(false);
+  const domTarget = useRef(null);
+  const dispatch = useDispatch();
+  const navbarStates: NavbarState = useSelector(
+    (state: RootState) => state.navbar
   );
-};
-
-// ! TO AVOID RE-RENDER, SEPARATE THIS COMPONENT FROM NavBar
-// ! THIS IS A GOOD PRACTICE
-const NavLinkItems = ({
-  isCollided,
-  selectedLink,
-  handleMenuClick,
-  setLinkAndSlider,
-}: {
-  isCollided: boolean;
-  selectedLink: string;
-  handleMenuClick: () => void;
-  setLinkAndSlider: (text: string, navLink: HTMLDivElement) => void;
-}) => (
-  /* When NavLinkItems is memoised, there is no need to memoise NavLink (child component)*/ /* Memoisation of NavLinkItems will only perserve NavLinkItems when other parts of NavBar re-renders*/ /* but will not preserve when there's a change in NavLink (by its props)\*/ <div className="trans z-10 ml-10 flex h-full w-full flex-row items-center gap-12">
-    {navLinkObjects.map((navLinkObject) => (
-      <div key={navLinkObject.text}>
-        <NavLink
-          text={navLinkObject.text}
-          href={navLinkObject.href}
-          onLinkActive={setLinkAndSlider}
-          isActive={selectedLink === navLinkObject.text}
-        />
-      </div>
-    ))}
-    {/* because the priority of operand + is higher, remaining contents must be quoted by a bracket. */}
-    <CollapseButton isCollided={isCollided} onClick={handleMenuClick} />
-  </div>
-);
-
-const NavBar = ({ graph }: { graph: React.RefObject<HTMLDivElement> }) => {
-  const [sliderPositions, setSliderPositions] = useState({
-    current: { left: 0, width: 0 },
-    previous: { left: 0, width: 0 },
-  });
-
-  const navBarRef = useRef<HTMLDivElement>(null);
-  const [selectedLink, setSelectedLink] = useState(navLinkObjects[0]?.text);
-  const [linkClicked, setLinkClicked] = useState(false);
-  const [isCollided, setIsCollided] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const initialValuesRef = useRef({
-    selectedLink: navLinkObjects[0]?.text,
-    linkClicked: false,
-    isCollided: false,
-    isMenuOpen: false,
-  });
+  const { collapsed, hoveredLink } = navbarStates;
+  const [totalHeight, setTotalHeight] = useState(0);
+  const baseHeight = useRef(0);
+  const [detailPage, setDetailPage] = useState<ColContent[]>([]);
+  const [windowWidth, setWindowWidth] = useState(0);
+  const MAX_WIDTH = 600;
 
   useEffect(() => {
-    // if we put rectSelf and rectGraph outside of the handleScroll function,
-    // the rectSelf and rectGraph will not be updated after the scroll event
-    // they will only be updated when the component is mounted
-    const handleScroll = () => {
-      // make sure to get the newest rect after the scroll event
-      const rectSelf = navBarRef.current?.getBoundingClientRect() as DOMRect;
-      const rectGraph = graph.current?.getBoundingClientRect() as DOMRect;
-      if (detectCollision(rectSelf, rectGraph)) {
-        setIsCollided(true);
+    const preventDefault = (e: Event) => e.preventDefault();
+    const handleScrollCollison = () => {
+      const graph = document.getElementById("__graph") as HTMLDivElement;
+      const navbar = document.getElementById("__navbar") as HTMLDivElement;
+      const { top: graphTop } = graph.getBoundingClientRect();
+      const { bottom: navbarBottom } = navbar.getBoundingClientRect();
+
+      if (graphTop > navbarBottom) {
+        setCollided(false);
       } else {
-        setIsCollided(false);
+        setCollided(true);
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [graph]);
+    const handleWindowResize = () => {
+      const { innerWidth } = window;
+      setWindowWidth(innerWidth);
+    };
+    const totalHeightOfChildren = Array.from(
+      (document.getElementById("__navbar") as HTMLDivElement).children
+    ).reduce((prev, cur) => prev + cur.clientHeight, 0);
+
+    setWindowWidth(window.innerWidth);
+    setTotalHeight(totalHeightOfChildren);
+    baseHeight.current = totalHeightOfChildren + 30;
+    document.addEventListener("gesturestart", preventDefault);
+    document.addEventListener("gesturechange", preventDefault);
+    document.addEventListener("scroll", handleScrollCollison);
+    window.addEventListener("resize", handleWindowResize);
+
+    return () => {
+      document.removeEventListener("gesturestart", preventDefault);
+      document.removeEventListener("gesturechange", preventDefault);
+      document.removeEventListener("scrollY", handleScrollCollison);
+      window.removeEventListener("resize", handleWindowResize);
+      setTotalHeight(0);
+      baseHeight.current = 0;
+    };
+  }, []);
 
   useEffect(() => {
-    const { linkClicked: initialLinkClicked } = initialValuesRef.current;
-    if (linkClicked !== initialLinkClicked) {
-      navBarRef.current?.classList.add("shadow-navBar");
-      navBarRef.current?.classList.add("dark:shadow-navBarDark");
-      setTimeout(() => {
-        navBarRef.current?.classList.remove("shadow-navBar");
-        navBarRef.current?.classList.remove("dark:shadow-navBarDark");
-      }, 200);
-      setLinkClicked(false);
-    }
-  }, [linkClicked, isMenuOpen]);
+    const getDetailData = async () => {
+      let d = null;
+      switch (hoveredLink) {
+        case "Panel":
+          d = await new Promise((resolve) => {
+            setTimeout(() => {
+              resolve(panelDetails);
+            }, 0);
+          });
+          return ["Panel", d];
 
-  const handleMouseDown = useCallback(() => {
-    navBarRef.current?.classList.add("scale-[0.99]");
-  }, []);
+        case "Profile":
+          d = await new Promise((resolve) => {
+            setTimeout(() => {
+              resolve(profileDetails);
+            }, 0);
+          });
+          return ["Profile", d];
 
-  const handleMouseUp = useCallback(() => {
-    navBarRef.current?.classList.remove("scale-[0.99]");
-  }, []);
+        default:
+          d = await Promise.resolve([]);
+          return ["", d];
+      }
+    };
 
-  const setLinkAndSlider = useCallback(
-    (text: string, navLink: HTMLDivElement) => {
-      setLinkClicked(true);
-      setSelectedLink(text);
-      setSliderPositions((prevState) => ({
-        current: {
-          left: navLink.offsetLeft,
-          width: navLink.offsetWidth,
-        },
-        previous: prevState.current,
-      }));
+    getDetailData()
+      .then((value: [string, ColContent[]]) => {
+        if (value[0] === hoveredLink) {
+          setDetailPage(value[1]);
+        }
+        console.log(hoveredLink);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }, [hoveredLink]);
+
+  useEffect(() => {
+    const totalHeightOfChildren = Array.from(
+      (document.getElementById("__navbar") as HTMLDivElement).children
+    ).reduce((prev, cur) => prev + cur.clientHeight, 0);
+
+    console.log(detailPage);
+
+    setTotalHeight(totalHeightOfChildren);
+  }, [detailPage]);
+
+  useEffect(() => {
+    dispatch(setNavbarCollapsed(collided));
+  }, [collided, dispatch]);
+
+  useGesture(
+    {
+      onMouseDown: () =>
+        apiPos.start({
+          scale: 0.98,
+        }),
+      onMouseUp: ({ hovering }) => {
+        apiPos({
+          scale: hovering ? 1.08 : 1.0,
+        });
+      },
+      onMove: ({ xy: [px, py], dragging }) =>
+        !dragging &&
+        apiPos.start({
+          rotateX: calcX(py, y.get()) / 5,
+          rotateY: calcY(px, x.get()) / 5,
+          scale: 1.08,
+          config: { mass: 5, tension: 350, friction: 40 },
+        }),
+      onHover: () => {
+        if (collapsed) {
+          dispatch(setNavbarCollapsed(false));
+        }
+      },
+      onMouseLeave: () => {
+        apiPos.start({
+          rotateX: 0,
+          rotateY: 0,
+          scale: 1,
+        });
+        dispatch(setNavbarHoveredLink(""));
+        if (collided) {
+          dispatch(setNavbarCollapsed(true));
+        }
+      },
     },
-    []
+    { domTarget, eventOptions: { passive: false } }
   );
 
-  const handleMenuClick = useCallback(() => {
-    // using functional update to avoid stale closure
-    // it is recommended to use functional update when the new state is based on the previous
-    // state, especially when the update is asynchronous
-    // or when updating in useEffect and useCallback
-    setIsMenuOpen((prevState) => !prevState);
-  }, []);
+  const { right, width, height, left } = useSpring({
+    width: !collapsed
+      ? windowWidth * 0.66 < MAX_WIDTH
+        ? windowWidth * 0.66
+        : MAX_WIDTH
+      : baseHeight.current,
+    height: hoveredLink === "" ? baseHeight.current : totalHeight + 30,
+    from: { width: 0, height: 0, right: 0, left: 0 },
+    right: collided ? (collapsed ? 40 : 0) : 0,
+    left: collided
+      ? collapsed
+        ? windowWidth - 20 - baseHeight.current
+        : 0
+      : 0,
+    // delay: 500,
+  });
 
-  const getNavBarClassNames = useCallback(() => {
-    const common =
-      "transition-all rounded-full duration-1000 fixed flex backdrop-blur-2xl z-0 ease-dynamicIsland dark:bg-black dark:hover:bg-black overflow-hidden ";
-    return !isCollided || isMenuOpen
-      ? "border-1 left-0 right-0 mx-auto top-10 animate-dynamic-grow bg-white/20 " +
-          common
-      : "cursor-pointer place-items-center justify-center right-20 top-10 animate-dynamic-shrink bg-white/30 hover:bg-white/50 " +
-          common;
-  }, [isCollided, isMenuOpen]);
+  const [{ x, y, scale }, apiPos] = useSpring(() => ({
+    rotateX: 0,
+    rotateY: 0,
+    rotateZ: 0,
+    scale: 1,
+    x: 0,
+    y: 0,
+    config: { mass: 5, tension: 350, friction: 40 },
+  }));
 
   return (
-    <div
-      ref={navBarRef}
-      className={getNavBarClassNames()}
-      onMouseDown={handleMouseDown}
-      onMouseLeave={handleMouseUp}
-      onMouseUp={handleMouseUp}
+    <a.div
+      id="__navbar"
+      ref={domTarget}
+      className={`fixed top-8 ml-auto mr-auto flex flex-col rounded-[40px] bg-white/40 pb-2 pl-4 pt-2 backdrop-blur-3xl dark:bg-black`}
+      style={{
+        transform: "perspective(600px)",
+        // x,
+        // y,
+        left,
+        right,
+        width,
+        height,
+        scale: to([scale], (s) => s),
+      }}
     >
-      {!isCollided || isMenuOpen ? (
-        <div>
-          <NavLinkItems
-            isCollided={isCollided}
-            selectedLink={selectedLink as string}
-            setLinkAndSlider={setLinkAndSlider}
-            handleMenuClick={handleMenuClick}
-          />
-          <SpringIndicator
-            fromOption={{
-              left: sliderPositions.previous.left,
-              width: sliderPositions.previous.width,
-            }}
-            toOption={{
-              left: sliderPositions.current.left,
-              width: sliderPositions.current.width,
-            }}
-            config={{ mass: 1, tension: 230, friction: 20 }}
-            classNames="absolute float z-10 bottom-0 h-2 rounded-md bg-fuchsia-600 dark:bg-fuchsia-400"
-          />
-        </div>
-      ) : (
-        <span
-          onClick={handleMenuClick}
-          className="flex h-full w-full shrink-0 animate-fade-in items-center justify-center  font-sans text-3xl font-bold text-fuchsia-600 dark:text-fuchsia-500"
-        >
-          ≣
-        </span>
-      )}
-    </div>
+      <div className="mt-2 flex flex-row items-center gap-4">
+        {navbarStates.links.map((text, idx) => (
+          <NavLink key={idx} text={text} order={idx} />
+        ))}
+      </div>
+      <Detail content={detailPage} />
+    </a.div>
   );
-};
-
-export default NavBar;
+}

@@ -7,7 +7,7 @@ import Middle from "./Middle";
 const Panel = () => {
   const graphRef = useRef<HTMLDivElement>(null);
   return (
-    <div className="flex min-h-[100vh] bg-panel">
+    <div className="flex min-h-[100vh] bg-panel dark:bg-panelDark">
       <NavBar graph={graphRef} />
       <div className="mt-32 flex h-full w-full flex-row justify-center">
         <Left />

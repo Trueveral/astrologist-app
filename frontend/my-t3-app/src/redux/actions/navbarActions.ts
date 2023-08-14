@@ -1,0 +1,7 @@
+export const NAVBAR_ACTIONS = {
+  HOVER: "HOVER",
+  UNHOVER: "UNHOVER",
+  START_PENDING: "START_PENDING",
+  END_PENDING: "END_PENDING",
+  // ...其他行为
+};

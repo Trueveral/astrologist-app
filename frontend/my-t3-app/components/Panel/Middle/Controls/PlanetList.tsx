@@ -1,7 +1,7 @@
 import { useRef, useEffect } from "react";
 
 const PlanetButton = ({ name }: { name: string }) => {
-  const selfRef = useRef<HTMLButtonElement>(null);
+  const buttonRef = useRef<HTMLDivElement>(null);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
@@ -31,14 +31,16 @@ const PlanetButton = ({ name }: { name: string }) => {
 
   return (
     <div className="mt-2 snap-center">
-      <div className="flex select-none flex-col items-center justify-center gap-1">
+      <div
+        ref={buttonRef}
+        className="flex select-none flex-col items-center justify-center gap-1"
+      >
         <button
           id={`panel-control-planet-button-${name}`}
           title={name}
-          ref={selfRef}
-          className={`h-10 w-10 flex-none cursor-pointer rounded-full bg-panel transition-all hover:scale-105 motion-safe:animate-pop-up`}
+          className={`h-10 w-10 flex-none cursor-pointer rounded-full border-[1px] border-gray-700 transition-[backgroundImage] motion-safe:animate-pop-up dark:border-white`}
         ></button>
-        <div className="cursor-default text-center font-sans text-sm motion-safe:animate-fade-in">
+        <div className="cursor-default text-center font-sans text-sm font-normal tracking-widest motion-safe:animate-fade-in dark:text-white">
           {name}
         </div>
       </div>
@@ -47,8 +49,43 @@ const PlanetButton = ({ name }: { name: string }) => {
 };
 
 const PlanetList = ({ planets }: { planets: string[] }) => {
+  const listRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry) {
+          if (
+            entry.isIntersecting &&
+            !entry.target.classList.contains("animate-slide-in-right")
+          ) {
+            entry.target.classList.add("animate-slide-in-right");
+          }
+        }
+      },
+      {
+        root: null,
+        rootMargin: "0px",
+        threshold: 0.1,
+      }
+    );
+
+    if (listRef.current) {
+      observer.observe(listRef.current);
+    }
+
+    return () => {
+      if (listRef.current) {
+        observer.unobserve(listRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <div className="grid max-w-[650px] grid-cols-10 gap-y-4">
+    <div
+      ref={listRef}
+      className="mb-8 mt-4 grid max-w-[650px] grid-cols-10 gap-y-4"
+    >
       {planets.map((planet) => (
         <PlanetButton name={planet} key={planet} />
       ))}
